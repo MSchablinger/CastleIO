@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://vtcyn4toefh3"]
+
+[ext_resource type="Script" path="res://World Objects/rock.gd" id="1_857hm"]
+[ext_resource type="Texture2D" uid="uid://c320ib5nsiwqc" path="res://images/MiniWorldSprites/Nature/Rocks.png" id="1_nfwp3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tycl7"]
+size = Vector2(12, 12)
+
+[node name="Rock" type="StaticBody2D"]
+scale = Vector2(2, 2)
+
+[node name="Rocks" type="Sprite2D" parent="."]
+position = Vector2(0, -6)
+texture = ExtResource("1_nfwp3")
+hframes = 3
+vframes = 4
+frame = 2
+script = ExtResource("1_857hm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_tycl7")
