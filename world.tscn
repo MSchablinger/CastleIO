@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://k8ftx0qfbnv5"]
+[gd_scene load_steps=10 format=3 uid="uid://k8ftx0qfbnv5"]
 
 [ext_resource type="Script" path="res://UI/Camera.gd" id="1_kjri0"]
 [ext_resource type="Script" path="res://world.gd" id="1_kstvi"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bg2ohhatacu6c" path="res://UI/ui.tscn" id="5_v8451"]
 [ext_resource type="Script" path="res://Objects.gd" id="6_enffx"]
 [ext_resource type="PackedScene" uid="uid://ds8keryh4mlvy" path="res://Houses/castle_keep.tscn" id="6_w36ft"]
+[ext_resource type="PackedScene" uid="uid://cevjtc14h54s7" path="res://unit/peasant.tscn" id="7_qdy2e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t20aj"]
 resource_name = "Grass"
@@ -47,6 +48,8 @@ script = ExtResource("6_enffx")
 y_sort_enabled = true
 
 [node name="CastleKeep" parent="Houses" instance=ExtResource("6_w36ft")]
-position = Vector2(519, 392)
+position = Vector2(520, 392)
 
 [node name="Resources" type="Node2D" parent="."]
+
+[node name="Peasant" parent="." instance=ExtResource("7_qdy2e")]

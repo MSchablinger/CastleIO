@@ -1,0 +1,98 @@
+[gd_scene load_steps=14 format=3 uid="uid://cevjtc14h54s7"]
+
+[ext_resource type="Script" path="res://unit/peasant.gd" id="1_oqstg"]
+[ext_resource type="Texture2D" uid="uid://hd87tn7lu2r" path="res://images/MiniWorldSprites/Characters/Workers/FarmerTemplate.png" id="1_pknup"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ti4n"]
+atlas = ExtResource("1_pknup")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a7fa1"]
+atlas = ExtResource("1_pknup")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u38yl"]
+atlas = ExtResource("1_pknup")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2ybe"]
+atlas = ExtResource("1_pknup")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6y5p6"]
+atlas = ExtResource("1_pknup")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b242j"]
+atlas = ExtResource("1_pknup")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u4qdn"]
+atlas = ExtResource("1_pknup")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trn8i"]
+atlas = ExtResource("1_pknup")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fqams"]
+atlas = ExtResource("1_pknup")
+region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5oxf5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ti4n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a7fa1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u38yl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p2ybe")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6y5p6")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b242j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u4qdn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trn8i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fqams")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dhjui"]
+
+[node name="Peasant" type="CharacterBody2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_oqstg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5oxf5")
+animation = &"down"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_dhjui")
