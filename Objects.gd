@@ -13,7 +13,7 @@ var keep: PackedScene = preload("res://Houses/castle_keep.tscn")
 
 func _ready():
 	init_empty_grid()
-	init_resources()
+	#init_resources()
 
 func init_empty_grid() -> void:
 	for x: int in range(grid_size.x):
@@ -59,7 +59,7 @@ func _input(event) -> void:
 			
 			var around: bool = false
 			for i: int in range(tile_size):
-				if grid[multi_x + i][multi_y] != null or grid[multi_x - i][multi_y] != null or grid[multi_x][multi_y + i] != null or grid[multi_x][multi_y - i] != null:
+				if (multi_x + i < grid.size() and multi_x + i >= 0 and multi_y >= 0 and multi_y < grid[multi_x + i].size() and grid[multi_x + i][multi_y] != null) or(multi_x - i >= 0 and multi_x - i < grid.size() and multi_y >= 0 and multi_y < grid[multi_x - i].size() and grid[multi_x - i][multi_y] != null) or (multi_x >= 0 and multi_x < grid.size() and multi_y + i < grid[multi_x].size() and multi_y + i >= 0 and grid[multi_x][multi_y + i] != null) or (multi_x >= 0 and multi_x < grid.size() and multi_y - i >= 0 and multi_y - i < grid[multi_x].size() and grid[multi_x][multi_y - i] != null):
 					around = true
 					break
 			
