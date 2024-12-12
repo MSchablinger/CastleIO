@@ -31,8 +31,8 @@ func _physics_process(_delta):
 				$AnimatedSprite2D.animation = "left"
 		else:
 			if direction.y > 0:
-				$AnimatedSprite2D.animation = "up"
-			else:
 				$AnimatedSprite2D.animation = "down"
+			else:
+				$AnimatedSprite2D.animation = "up"
 	$AnimatedSprite2D.play()	
 	move_and_slide()
