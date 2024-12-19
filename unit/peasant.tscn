@@ -262,8 +262,9 @@ script = ExtResource("1_oqstg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5oxf5")
-animation = &"left"
-frame_progress = 0.822451
+animation = &"attack_down"
+frame = 2
+frame_progress = 0.605946
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_dhjui")

@@ -32,7 +32,7 @@ func _process(delta):
 	zoom_camera(delta)
 	move_camera(delta)
 	
-	process_select_area()
+	#process_select_area()
 
 
 func zoom_camera(delta: float) -> void:
@@ -61,28 +61,28 @@ func get_input_y() -> int:
 	return int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up"))
 
 
-func process_select_area() -> void:
-	if Input.is_action_just_pressed("LeftClick"):
-		start = mousePosGlobal
-		startV = mousePos
-		isDragging = true
-		
-	if isDragging:
-		end = mousePosGlobal
-		endV = mousePos
-		draw_area()
-		
-	if Input.is_action_just_released("LeftClick"):
-		if startV.distance_to(mousePos) > 20:
-			end = mousePosGlobal
-			endV = mousePos
-			isDragging = false
-			draw_area(false)
-			emit_signal("area_selected", self)
-		else:
-			end = start
-			isDragging = false
-			draw_area(false)
+#func process_select_area() -> void:
+	#if Input.is_action_just_pressed("LeftClick"):
+		#start = mousePosGlobal
+		#startV = mousePos
+		#isDragging = true
+		#
+	#if isDragging:
+		#end = mousePosGlobal
+		#endV = mousePos
+		#draw_area()
+		#
+	#if Input.is_action_just_released("LeftClick"):
+		#if startV.distance_to(mousePos) > 20:
+			#end = mousePosGlobal
+			#endV = mousePos
+			#isDragging = false
+			#draw_area(false)
+			#emit_signal("area_selected", self)
+		#else:
+			#end = start
+			#isDragging = false
+			#draw_area(false)
 	
 
 func _input(event: InputEvent) -> void:

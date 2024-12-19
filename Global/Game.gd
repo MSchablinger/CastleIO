@@ -7,6 +7,9 @@ var gold_mine_count: int = 0
 var health: int = 100
 var is_spawn_unit_open: bool = false
 
+var tile_size: int = 16
+var grid_size: Vector2i = Vector2i(64, 48)
+
 @onready var spawn: PackedScene = preload("res://Global/spawn_unit.tscn")
 
 func spawn_unit(position: Vector2) -> void:

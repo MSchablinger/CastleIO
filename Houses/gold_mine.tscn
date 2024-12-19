@@ -17,7 +17,9 @@ y_sort_enabled = true
 scale = Vector2(2, 2)
 script = ExtResource("1_ol2fe")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_thrvg")
 
@@ -40,5 +42,9 @@ texture = ExtResource("1_1jcfv")
 hframes = 3
 vframes = 5
 frame = 11
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_thrvg")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

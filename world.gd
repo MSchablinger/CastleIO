@@ -2,7 +2,6 @@ extends Node2D
 
 var units: Array = []
 
-
 func _ready():
 	get_units()
 

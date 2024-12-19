@@ -35,5 +35,10 @@ scale = Vector2(2.38948, 1.9242)
 theme_override_styles/background = SubResource("StyleBoxFlat_s7ujf")
 theme_override_styles/fill = SubResource("StyleBoxFlat_lrdpt")
 value = 100.0
-fill_mode = 1
 show_percentage = false
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 7)
+shape = SubResource("RectangleShape2D_s44pl")
