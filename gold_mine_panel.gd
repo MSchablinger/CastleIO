@@ -19,7 +19,6 @@ func _on_gui_input(event: InputEvent) -> void:
 			#button left down and dragging
 			if get_child_count() > 1:
 				get_child(1).global_position = event.global_position
-				var mapPath = get_tree().get_root().get_node("World/Grass")
 				var targets = get_child(1).get_node("Area2D").get_overlapping_bodies()
 				if (targets.size() > 1):
 					get_child(1).get_node("Area2D").modulate = Color(255,255,255)

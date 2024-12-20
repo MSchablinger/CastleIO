@@ -31,9 +31,8 @@ func get_world_scenes():
 	
 	houses_world_node = root_world_window.get_node("World/Houses")
 	units_world_node = root_world_window.get_node("World/Units")
-	objects_world_node = root_world_window.get_node("World/Objects")
+	objects_world_node = root_world_window.get_node("World/NavigationRegion2D")
 	resources_world_node = root_world_window.get_node("World/Resources")
-
 
 func update_camera():
 	camera.position = camera_world_node.position / 2

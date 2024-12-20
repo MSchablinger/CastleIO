@@ -25,3 +25,9 @@ shape = SubResource("RectangleShape2D_s11cc")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -7.5)
 shape = SubResource("RectangleShape2D_s11cc")
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
+position = Vector2(0, -5)
+radius = 25.0
+vertices = PackedVector2Array(10, -18, 10, 8, -10, 8, -10, -18)
+affect_navigation_mesh = true

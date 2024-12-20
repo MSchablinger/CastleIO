@@ -255,6 +255,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dhjui"]
+size = Vector2(10, 12)
 
 [node name="Peasant" type="CharacterBody2D"]
 scale = Vector2(2, 2)
@@ -262,9 +263,11 @@ script = ExtResource("1_oqstg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5oxf5")
-animation = &"attack_down"
-frame = 2
-frame_progress = 0.605946
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_dhjui")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+target_desired_distance = 40.0
+avoidance_enabled = true

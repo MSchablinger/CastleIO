@@ -2,86 +2,72 @@ extends CharacterBody2D
 
 @export var speed: float = 100.0  # Movement speed of the enemy
 @export var attack_damage: int = 10  # Damage dealt to the building per attack
-@export var attack_interval: float = 1.0  # Time between attacks (in seconds)
+@export var attack_interval: float = 3.0  # Time between attacks (in seconds)
 
 # Internal variables
 var target_position: Vector2
 var can_attack: bool = true
 
 # Reference to the building (StaticBody2D)
-@onready var building = get_parent().get_node("Houses/CastleKeep")  # Adjust the path as needed
+@onready var building = get_parent().get_parent().get_node("Houses/CastleKeep")
+@onready var animation_sprite = $AnimatedSprite2D 
+@onready var navigation = $NavigationAgent2D
 
 func _ready():
-	target_position = building.global_position
+	if building:
+		target_position = building.global_position
 
 func _physics_process(delta: float):
-	var direction = (target_position - global_position).normalized()
-	if not is_close_to_target():
-		velocity = direction * speed
-		if direction.y == 0:
-			if direction.x > 0:
-				$AnimatedSprite2D.animation = "right"
-			elif direction.x < 0:
-				$AnimatedSprite2D.animation = "left"
-			else:
-				$AnimatedSprite2D.animation = "idle"
-		elif direction.x == 0:
-			if direction.y > 0:
-				$AnimatedSprite2D.animation = "up"
-			elif direction.y < 0:
-				$AnimatedSprite2D.animation = "down"
-			else:
-				$AnimatedSprite2D.animation = "idle"
+	if building and not building.is_queued_for_deletion():
+		navigation.target_position = building.global_position
+	if NavigationServer2D.map_get_iteration_id(navigation.get_navigation_map()) > 0:
+		if navigation.is_target_reachable() and !navigation.is_target_reached():
+			move_along_path(delta)
 		else:
-			if abs(direction.x) > abs(direction.y):
-				if direction.x > 0:
-					$AnimatedSprite2D.animation = "right"
-				else:
-					$AnimatedSprite2D.animation = "left"
-			else:
-				if direction.y > 0:
-					$AnimatedSprite2D.animation = "down"
-				else:
-					$AnimatedSprite2D.animation = "up"
-		$AnimatedSprite2D.play()	
+			velocity = Vector2.ZERO
+			play_animation("idle")
+			if can_attack and is_close_to_target():
+				attack_building()
+	
+
+func move_along_path(delta: float):
+	var next_point = navigation.get_next_path_position()
+	if global_position.distance_to(next_point) > 1.0:
+		var direction = (next_point - global_position).normalized()
+		velocity = direction * speed
+		play_movement_animation(direction)
 		move_and_slide()
 	else:
 		velocity = Vector2.ZERO
-		$AnimatedSprite2D.animation = "idle"
-		if can_attack:
-			if direction.y == 0:
-				if direction.x > 0:
-					$AnimatedSprite2D.animation = "attack_right"
-				elif direction.x < 0:
-					$AnimatedSprite2D.animation = "attack_left"
-				else:
-					$AnimatedSprite2D.animation = "idle"
-			elif direction.x == 0:
-				if direction.y > 0:
-					$AnimatedSprite2D.animation = "attack_up"
-				elif direction.y < 0:
-					$AnimatedSprite2D.animation = "attack_down"
-				else:
-					$AnimatedSprite2D.animation = "idle"
-			else:
-				if abs(direction.x) > abs(direction.y):
-					if direction.x > 0:
-						$AnimatedSprite2D.animation = "attack_right"
-					else:
-						$AnimatedSprite2D.animation = "attack_left"
-				else:
-					if direction.y > 0:
-						$AnimatedSprite2D.animation = "attack_down"
-					else:
-						$AnimatedSprite2D.animation = "attack_up"
-			attack_building()
-
-func is_close_to_target() -> bool:
-	return global_position.distance_to(target_position) < 40.0  # Adjust the distance as needed
 
 func attack_building():
 	if building != null and not building.is_queued_for_deletion() and building.has_method("apply_damage"):
 		building.apply_damage(attack_damage)
+		play_animation(get_attack_animation())
 		can_attack = false
 		await get_tree().create_timer(attack_interval).timeout
 		can_attack = true
+
+func is_close_to_target() -> bool:
+	return global_position.distance_to(target_position) < 40.0
+
+func play_animation(animation_name: String):
+	if animation_sprite.animation != animation_name:
+		animation_sprite.play(animation_name)
+
+func play_movement_animation(direction: Vector2):
+	if abs(direction.x) > abs(direction.y):
+		if direction.x > 0:
+			play_animation("right")
+		else:
+			play_animation("left")
+	else:
+		if direction.y > 0:
+			play_animation("down")
+		else:
+			play_animation("up")
+func get_attack_animation() -> String:
+	if abs(velocity.x) > abs(velocity.y):
+		return "attack_right" if velocity.x > 0 else "attack_left"
+	else:
+		return "attack_down" if velocity.y > 0 else "attack_up"
