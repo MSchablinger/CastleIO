@@ -4,7 +4,6 @@ var wood: int = 0
 var stone: int = 0
 var gold: int = 0
 var gold_mine_count: int = 0
-var health: int = 100
 var is_spawn_unit_open: bool = false
 
 var tile_size: int = 16

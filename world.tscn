@@ -53,7 +53,7 @@ script = ExtResource("3_tb6tp")
 y_sort_enabled = true
 
 [node name="Peasant" parent="Units" instance=ExtResource("6_4rtpu")]
-position = Vector2(532, 13)
+position = Vector2(521, 10)
 
 [node name="Houses" type="Node2D" parent="."]
 y_sort_enabled = true

@@ -1,8 +1,9 @@
 extends CharacterBody2D
 
-@export var speed: float = 100.0  # Movement speed of the enemy
-@export var attack_damage: int = 10  # Damage dealt to the building per attack
-@export var attack_interval: float = 3.0  # Time between attacks (in seconds)
+var speed: float = 100.0  # Movement speed of the enemy
+var attack_damage: int = 10  # Damage dealt to the building per attack
+var attack_interval: float = 3.0  # Time between attacks (in seconds)
+var health = 100
 
 # Internal variables
 var target_position: Vector2
@@ -12,13 +13,14 @@ var can_attack: bool = true
 @onready var building = get_parent().get_parent().get_node("Houses/CastleKeep")
 @onready var animation_sprite = $AnimatedSprite2D 
 @onready var navigation = $NavigationAgent2D
+@onready var progress_bar = $ProgressBar
 
 func _ready():
 	if building:
 		target_position = building.global_position
 
 func _physics_process(delta: float):
-	if building and not building.is_queued_for_deletion():
+	if building != null and not building.is_queued_for_deletion():
 		navigation.target_position = building.global_position
 	if NavigationServer2D.map_get_iteration_id(navigation.get_navigation_map()) > 0:
 		if navigation.is_target_reachable() and !navigation.is_target_reached():
@@ -28,7 +30,11 @@ func _physics_process(delta: float):
 			play_animation("idle")
 			if can_attack and is_close_to_target():
 				attack_building()
-	
+
+func apply_damage(damage: int):
+	progress_bar.value -= damage
+	if progress_bar.value <= 0:
+		queue_free()
 
 func move_along_path(delta: float):
 	var next_point = navigation.get_next_path_position()
@@ -66,8 +72,13 @@ func play_movement_animation(direction: Vector2):
 			play_animation("down")
 		else:
 			play_animation("up")
+
 func get_attack_animation() -> String:
 	if abs(velocity.x) > abs(velocity.y):
 		return "attack_right" if velocity.x > 0 else "attack_left"
 	else:
 		return "attack_down" if velocity.y > 0 else "attack_up"
+
+func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if event is InputEventMouseButton and event.button_index == 1:
+		apply_damage(10)

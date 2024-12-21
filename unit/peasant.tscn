@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cevjtc14h54s7"]
+[gd_scene load_steps=36 format=3 uid="uid://cevjtc14h54s7"]
 
 [ext_resource type="Script" path="res://unit/peasant.gd" id="1_oqstg"]
 [ext_resource type="Texture2D" uid="uid://hd87tn7lu2r" path="res://images/MiniWorldSprites/Characters/Workers/FarmerTemplate.png" id="1_pknup"]
@@ -257,8 +257,15 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dhjui"]
 size = Vector2(10, 12)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p4oll"]
+bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_faxmk"]
+bg_color = Color(0, 1, 0, 1)
+
 [node name="Peasant" type="CharacterBody2D"]
 scale = Vector2(2, 2)
+input_pickable = true
 script = ExtResource("1_oqstg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -271,3 +278,15 @@ shape = SubResource("RectangleShape2D_dhjui")
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 target_desired_distance = 40.0
 avoidance_enabled = true
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -5.0
+offset_top = -12.0
+offset_right = 5.0
+offset_bottom = -10.0
+theme_override_styles/background = SubResource("StyleBoxFlat_p4oll")
+theme_override_styles/fill = SubResource("StyleBoxFlat_faxmk")
+value = 100.0
+show_percentage = false
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
