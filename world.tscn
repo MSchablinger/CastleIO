@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://k8ftx0qfbnv5"]
+[gd_scene load_steps=12 format=3 uid="uid://k8ftx0qfbnv5"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_kstvi"]
 [ext_resource type="Texture2D" uid="uid://i10bximvko5u" path="res://images/MiniWorldSprites/Ground/TexturedGrass.png" id="2_3qorf"]
@@ -7,11 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://bg2ohhatacu6c" path="res://UI/ui.tscn" id="5_v8451"]
 [ext_resource type="Script" path="res://units.gd" id="6_rlm2l"]
 [ext_resource type="PackedScene" uid="uid://ds8keryh4mlvy" path="res://Houses/castle_keep.tscn" id="6_w36ft"]
+[ext_resource type="PackedScene" path="res://UI/game_over.tscn" id="8_ykp2r"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_1fex8"]
-vertices = PackedVector2Array(1081, -38.0234, 1081, 817.969, -56.7422, 815.023, -35.2422, -40.9688)
+vertices = PackedVector2Array(1033, 781, -10, 781, -10, -8, 1033, -8)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-45, -51, 1091, -48, 1091, 828, -67, 825)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-20, -18, 1043, -18, 1043, 791, -20, 791)])
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t20aj"]
 resource_name = "Grass"
@@ -60,3 +61,9 @@ y_sort_enabled = true
 position = Vector2(520, 392)
 
 [node name="Resources" type="Node2D" parent="."]
+
+[node name="GameOver" parent="." instance=ExtResource("8_ykp2r")]
+offset_left = 523.0
+offset_top = 385.0
+offset_right = 523.0
+offset_bottom = 385.0

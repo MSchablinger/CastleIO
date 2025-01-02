@@ -1,10 +1,27 @@
 extends Node2D
 
 var units: Array = []
+@onready var game_over_ui = $GameOver
+@onready var castle_keep = $Houses/CastleKeep
 
 func _ready():
 	get_units()
+	castle_keep.keep_destroyed.connect(_on_keep_destroyed)
+	game_over_ui.retry_pressed.connect(_on_retry_pressed)
 
+func _on_keep_destroyed():
+	game_over_ui.show_game_over()
+
+func _on_retry_pressed():
+	# Reset resources
+	Game.wood = 0
+	Game.stone = 0
+	Game.gold = 0
+	Game.gold_mine_count = 0
+
+	# Make sure we're unpaused before changing the scene
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://world.tscn")
 
 func get_units() -> void:
 	units = get_tree().get_nodes_in_group("units")
