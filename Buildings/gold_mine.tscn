@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://d2cs3miulx3rf"]
 
-[ext_resource type="Texture2D" uid="uid://bvvar5kmf2jhx" path="res://Assets/MiniWorldSprites/Buildings/Wood/Resources.png" id="1_1jcfv"]
+[ext_resource type="Texture2D" uid="uid://bvvar5kmf2jhx" path="res://Assets/GodsBuildings/Resources.png" id="1_1jcfv"]
 [ext_resource type="Script" path="res://Buildings/gold_mine.gd" id="1_ol2fe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_thrvg"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://vtcyn4toefh3"]
 
 [ext_resource type="Script" path="res://World/rock.gd" id="1_857hm"]
-[ext_resource type="Texture2D" uid="uid://c320ib5nsiwqc" path="res://Assets/MiniWorldSprites/Nature/Rocks.png" id="1_nfwp3"]
+[ext_resource type="Texture2D" uid="uid://c320ib5nsiwqc" path="res://Assets/Resources/Rocks.png" id="1_nfwp3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tycl7"]
 size = Vector2(12, 12)

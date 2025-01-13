@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://duvegjudp7c0u"]
 
-[ext_resource type="Texture2D" uid="uid://cwdlhhojrafls" path="res://Assets/MiniWorldSprites/Characters/Champions/Arthax.png" id="1_4bww5"]
+[ext_resource type="Texture2D" uid="uid://cwdlhhojrafls" path="res://Assets/xxx/Arthax.png" id="1_4bww5"]
 [ext_resource type="Script" path="res://Entities/unit.gd" id="1_iu8js"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fuosd"]

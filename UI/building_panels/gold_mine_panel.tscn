@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ikh1kpduawp1"]
 
 [ext_resource type="Script" path="res://UI/building_panels/gold_mine_panel.gd" id="1_gcp3h"]
-[ext_resource type="Texture2D" uid="uid://c8a2xk58qhk5i" path="res://Assets/MiniWorldSprites/Buildings/Wood/CaveV2.png" id="2_3wtf7"]
+[ext_resource type="Texture2D" uid="uid://c8a2xk58qhk5i" path="res://Assets/GodsBuildings/CaveV2.png" id="2_3wtf7"]
 
 [node name="GoldMinePanel" type="Panel"]
 custom_minimum_size = Vector2(20, 20)

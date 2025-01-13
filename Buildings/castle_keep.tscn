@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://ds8keryh4mlvy"]
 
 [ext_resource type="Script" path="res://Buildings/castle_keep.gd" id="1_ophet"]
-[ext_resource type="Texture2D" uid="uid://dlr4y1w3ao52a" path="res://Assets/MiniWorldSprites/Buildings/Wood/Keep.png" id="2_v2my2"]
+[ext_resource type="Texture2D" uid="uid://dlr4y1w3ao52a" path="res://Assets/GodsBuildings/Keep.png" id="2_v2my2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s44pl"]
 size = Vector2(60, 50)
