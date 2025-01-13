@@ -1,6 +1,6 @@
 extends Panel
 
-var house: PackedScene = preload("res://Houses/gold_mine.tscn")
+var house: PackedScene = preload("res://Buildings/gold_mine.tscn")
 
 func _on_gui_input(event: InputEvent) -> void:
 	var cost = 10 * (Game.gold_mine_count + 1)

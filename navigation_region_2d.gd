@@ -1,8 +1,8 @@
 extends NavigationRegion2D
 
-var tree: PackedScene = preload("res://World Objects/tree.tscn")
-var rock: PackedScene = preload("res://World Objects/rock.tscn")
-var keep: PackedScene = preload("res://Houses/castle_keep.tscn")
+var tree: PackedScene = preload("res://World/tree.tscn")
+var rock: PackedScene = preload("res://World/rock.tscn")
+var keep: PackedScene = preload("res://Buildings/castle_keep.tscn")
 
 func _ready():
 	init_resources()

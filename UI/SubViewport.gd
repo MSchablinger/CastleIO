@@ -6,11 +6,11 @@ var units_world_node: Node2D
 var objects_world_node: Node2D
 var resources_world_node: Node2D
 
-var barrack_sprite: PackedScene = preload("res://UI/MiniMap Sprites/barrack_sprite.tscn")
-var tree_sprite: PackedScene = preload("res://UI/MiniMap Sprites/tree_sprite.tscn")
-var rock_sprite: PackedScene = preload("res://UI/MiniMap Sprites/rock_sprite.tscn")
-var arthax_sprite: PackedScene = preload("res://UI/MiniMap Sprites/arthax_sprite.tscn")
-var coin_house_sprite: PackedScene = preload("res://UI/MiniMap Sprites/coin_house_sprite.tscn")
+var barrack_sprite: PackedScene = preload("res://UI/sprites/barrack_sprite.tscn")
+var tree_sprite: PackedScene = preload("res://UI/sprites/tree_sprite.tscn")
+var rock_sprite: PackedScene = preload("res://UI/sprites/rock_sprite.tscn")
+var arthax_sprite: PackedScene = preload("res://UI/sprites/arthax_sprite.tscn")
+var coin_house_sprite: PackedScene = preload("res://UI/sprites/coin_house_sprite.tscn")
 
 @onready var camera: Camera2D = $Camera
 

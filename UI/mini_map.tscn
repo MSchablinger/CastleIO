@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bte3hplcb7bjd"]
 
 [ext_resource type="Script" path="res://UI/SubViewport.gd" id="1_elwce"]
-[ext_resource type="Texture2D" uid="uid://dmcm52a0ekus1" path="res://images/MiniWorldSprites/Ground/Grass.png" id="1_lcl77"]
+[ext_resource type="Texture2D" uid="uid://dmcm52a0ekus1" path="res://Assets/MiniWorldSprites/Ground/Grass.png" id="1_lcl77"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kiium"]
 bg_color = Color(0.0941176, 0.278431, 0.619608, 1)

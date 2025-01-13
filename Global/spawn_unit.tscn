@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://uqkeh627js8c"]
 
 [ext_resource type="Script" path="res://Global/spawn_unit.gd" id="1_b5xw0"]
-[ext_resource type="Texture2D" uid="uid://cwdlhhojrafls" path="res://images/MiniWorldSprites/Characters/Champions/Arthax.png" id="2_g4bx4"]
+[ext_resource type="Texture2D" uid="uid://cwdlhhojrafls" path="res://Assets/MiniWorldSprites/Characters/Champions/Arthax.png" id="2_g4bx4"]
 
 [node name="SpawnUnit" type="Node2D"]
 position = Vector2(304, 120)

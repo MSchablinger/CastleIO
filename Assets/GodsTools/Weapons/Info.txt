@@ -1,0 +1,3 @@
+Pickaxe: Stone
+Axe: Wood
+Sword: Damage

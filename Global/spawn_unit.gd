@@ -2,7 +2,7 @@ extends Node2D
 
 var house_position: Vector2 = Vector2(300, 300)
 
-@onready var unit: PackedScene = preload("res://unit/unit.tscn")
+@onready var unit: PackedScene = preload("res://Entities/unit.tscn")
 
 
 func _on_yes_pressed():
