@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://m2ogwcyupit1"]
+
+[ext_resource type="Texture2D" uid="uid://cn3athxbo7mip" path="res://images/CutSprites/ballista/tile001.png" id="1_l5gkv"]
+[ext_resource type="Script" path="res://UI/building_panels/ballista_panel.gd" id="1_y57bv"]
+
+[node name="BallistaPanel" type="Panel"]
+custom_minimum_size = Vector2(20, 20)
+offset_right = 20.0
+offset_bottom = 20.0
+script = ExtResource("1_y57bv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(10, 9)
+texture = ExtResource("1_l5gkv")

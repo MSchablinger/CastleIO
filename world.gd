@@ -3,11 +3,17 @@ extends Node2D
 var units: Array = []
 @onready var game_over_ui = $GameOver
 @onready var castle_keep = $Houses/CastleKeep
+@onready var units_node = $Units
+@onready var next_wave = $NextWave
 
 func _ready():
 	get_units()
 	castle_keep.keep_destroyed.connect(_on_keep_destroyed)
 	game_over_ui.retry_pressed.connect(_on_retry_pressed)
+	units_node.wave_cleared.connect(_on_wave_cleared)
+
+func _on_wave_cleared():
+	next_wave.show_wave()
 
 func _on_keep_destroyed():
 	game_over_ui.show_game_over()

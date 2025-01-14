@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bg2ohhatacu6c"]
+[gd_scene load_steps=6 format=3 uid="uid://bg2ohhatacu6c"]
 
 [ext_resource type="Script" path="res://UI/ui.gd" id="1_skct8"]
 [ext_resource type="PackedScene" uid="uid://bte3hplcb7bjd" path="res://UI/mini_map.tscn" id="2_oubbu"]
 [ext_resource type="PackedScene" uid="uid://ikh1kpduawp1" path="res://UI/building_panels/gold_mine_panel.tscn" id="3_hn32u"]
+[ext_resource type="PackedScene" uid="uid://m2ogwcyupit1" path="res://UI/building_panels/ballista_panel.tscn" id="4_mqsok"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pjiyy"]
 bg_color = Color(0.156863, 0.156863, 0.156863, 0.490196)
@@ -52,3 +53,8 @@ scale = Vector2(5, 5)
 
 [node name="GoldMinePanel" parent="Panel2/HFlowContainer" instance=ExtResource("3_hn32u")]
 layout_mode = 2
+
+[node name="BallistaPanel" parent="Panel2/HFlowContainer" instance=ExtResource("4_mqsok")]
+layout_mode = 2
+
+[connection signal="gui_input" from="Panel2/HFlowContainer/BallistaPanel" to="Panel2/HFlowContainer/BallistaPanel" method="_on_gui_input"]
