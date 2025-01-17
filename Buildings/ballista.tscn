@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bgluwtb2bdfdj"]
 
-[ext_resource type="Texture2D" uid="uid://cn3athxbo7mip" path="res://images/CutSprites/ballista/tile001.png" id="1_0lcjx"]
+[ext_resource type="Texture2D" uid="uid://bo0vduwgqxyrm" path="res://Assets/GodsBuildings/Ballista.png" id="1_0lcjx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_enytd"]
 size = Vector2(16, 16)
@@ -17,6 +17,9 @@ shape = SubResource("RectangleShape2D_enytd")
 [node name="BallistaSprite" type="Sprite2D" parent="."]
 position = Vector2(0, -8)
 texture = ExtResource("1_0lcjx")
+hframes = 7
+vframes = 4
+frame = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -8)

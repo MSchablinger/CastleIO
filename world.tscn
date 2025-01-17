@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://k8ftx0qfbnv5"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_kstvi"]
-[ext_resource type="Texture2D" uid="uid://dvoehfllx5s73" path="res://Assets/Ground/TexturedGrass.png" id="2_3qorf"]
+[ext_resource type="Texture2D" uid="uid://cexyesbqjotf0" path="res://Assets/Ground/TexturedGrass.png" id="2_3qorf"]
 [ext_resource type="Script" path="res://navigation_region_2d.gd" id="2_qsl8b"]
 [ext_resource type="Script" path="res://UI/Camera.gd" id="3_tb6tp"]
 [ext_resource type="PackedScene" uid="uid://bg2ohhatacu6c" path="res://UI/ui.tscn" id="5_v8451"]
