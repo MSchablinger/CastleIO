@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1ch6gdm8j33f"]
+
+[ext_resource type="Script" path="res://World/chest_spawner.gd" id="1_spawner"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_radius"]
+size = Vector2(995, 490)
+
+[node name="ChestSpawner" type="Node2D"]
+script = ExtResource("1_spawner")
+
+[node name="SpawnArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnArea"]
+position = Vector2(511, 370)
+shape = SubResource("RectangleShape2D_radius")
+debug_color = Color(0.701961, 0.215686, 0.658824, 0.419608)
