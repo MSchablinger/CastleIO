@@ -15,11 +15,26 @@ func _ready() -> void:
 	if units_node:
 		units_node.wave_cleared.connect(_on_wave_cleared)
 	
+	# Connect to game over signal
+	var game_over = get_node("/root/World/GameOver")
+	if game_over:
+		game_over.retry_pressed.connect(_on_game_over)
+	
 	# Initial spawn
 	spawn_chest_wave()
 
 func _on_wave_cleared() -> void:
 	spawn_chest_wave()
+
+func _on_game_over() -> void:
+	# Clear existing chests immediately
+	get_tree().call_group("chests", "queue_free")
+	
+	# Cancel any pending spawns
+	for child in get_children():
+		if child is Timer:
+			child.stop()
+			child.queue_free()
 
 func spawn_chest_wave() -> void:
 	# Determine number of chests for this wave
@@ -51,7 +66,7 @@ func get_random_position() -> Vector2:
 
 func spawn_single_chest() -> void:
 	var chest_instance = chest_scene.instantiate()
-		chest_instance.position = get_random_position()
+	chest_instance.position = get_random_position()
 	
 	# Randomly decide if it's a gold chest (30% chance)
 	var is_gold = randf() < 0.3

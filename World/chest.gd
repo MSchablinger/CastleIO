@@ -7,6 +7,7 @@ var gold_amount: int
 var despawn_time := 15.0 # in seconds
 
 func _ready() -> void:
+	add_to_group("chests")
 	input_event.connect(_on_input_event)
 	var timer = get_tree().create_timer(despawn_time)
 	timer.timeout.connect(queue_free)
