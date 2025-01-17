@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bg2ohhatacu6c"]
+[gd_scene load_steps=9 format=3 uid="uid://bg2ohhatacu6c"]
 
 [ext_resource type="Script" path="res://UI/ui.gd" id="1_skct8"]
 [ext_resource type="PackedScene" uid="uid://bte3hplcb7bjd" path="res://UI/mini_map.tscn" id="2_oubbu"]
@@ -17,17 +17,88 @@ corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wood"]
+bg_color = Color(0.545098, 0.270588, 0.0745098, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_stone"]
+bg_color = Color(0.501961, 0.501961, 0.501961, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gold"]
+bg_color = Color(1, 0.843137, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_skct8")
 
 [node name="Panel" type="Panel" parent="."]
 theme_override_styles/panel = SubResource("StyleBoxFlat_pjiyy")
 
-[node name="Label" type="Label" parent="."]
-offset_left = 960.0
+[node name="ResourceContainer" type="VBoxContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -180.0
 offset_top = 8.0
-offset_right = 1140.0
-offset_bottom = 31.0
+offset_right = -8.0
+offset_bottom = 100.0
+grow_horizontal = 0
+theme_override_constants/separation = 2
+
+[node name="WoodRow" type="HBoxContainer" parent="ResourceContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="Dot" type="Panel" parent="ResourceContainer/WoodRow"]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_wood")
+
+[node name="WoodLabel" type="Label" parent="ResourceContainer/WoodRow"]
+layout_mode = 2
+text = "Wood: 0"
+horizontal_alignment = 2
+
+[node name="StoneRow" type="HBoxContainer" parent="ResourceContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="Dot" type="Panel" parent="ResourceContainer/StoneRow"]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_stone")
+
+[node name="StoneLabel" type="Label" parent="ResourceContainer/StoneRow"]
+layout_mode = 2
+text = "Stone: 0"
+horizontal_alignment = 2
+
+[node name="GoldRow" type="HBoxContainer" parent="ResourceContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="Dot" type="Panel" parent="ResourceContainer/GoldRow"]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_gold")
+
+[node name="GoldLabel" type="Label" parent="ResourceContainer/GoldRow"]
+layout_mode = 2
+text = "Gold: 0"
+horizontal_alignment = 2
 
 [node name="MiniMap" parent="." instance=ExtResource("2_oubbu")]
 
