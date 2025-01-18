@@ -9,7 +9,7 @@ var resources_world_node: Node2D
 var barrack_sprite: PackedScene = preload("res://UI/sprites/barrack_sprite.tscn")
 var tree_sprite: PackedScene = preload("res://UI/sprites/tree_sprite.tscn")
 var rock_sprite: PackedScene = preload("res://UI/sprites/rock_sprite.tscn")
-var arthax_sprite: PackedScene = preload("res://UI/sprites/arthax_sprite.tscn")
+var unit_sprite: PackedScene = preload("res://UI/sprites/unit_sprite.tscn")
 var coin_house_sprite: PackedScene = preload("res://UI/sprites/coin_house_sprite.tscn")
 
 @onready var camera: Camera2D = $Camera
@@ -70,7 +70,7 @@ func _on_tree_timer_timeout():
 
 func update_units():
 	clear_group_node($Units)
-	build_objects(units_world_node, arthax_sprite, $Units)
+	build_objects(units_world_node, unit_sprite, $Units)
 
 
 func clear_group_node(group_node: Node2D):

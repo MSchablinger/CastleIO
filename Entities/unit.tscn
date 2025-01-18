@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://duvegjudp7c0u"]
 
-[ext_resource type="Texture2D" uid="uid://cwdlhhojrafls" path="res://Assets/xxx/Arthax.png" id="1_4bww5"]
+[ext_resource type="Texture2D" uid="uid://ca1hp508iue0j" path="res://Assets/Enemies/Farmer.png" id="1_sprite"]
 [ext_resource type="Script" path="res://Entities/unit.gd" id="1_iu8js"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fuosd"]
@@ -20,7 +20,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Arthax:frame")
+tracks/0/path = NodePath("UnitSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -37,7 +37,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Arthax:frame")
+tracks/0/path = NodePath("UnitSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -61,9 +61,9 @@ script = ExtResource("1_iu8js")
 position = Vector2(-0.5, -5.5)
 shape = SubResource("RectangleShape2D_fuosd")
 
-[node name="Arthax" type="Sprite2D" parent="."]
+[node name="UnitSprite" type="Sprite2D" parent="."]
 position = Vector2(0, -8)
-texture = ExtResource("1_4bww5")
+texture = ExtResource("1_sprite")
 hframes = 5
 vframes = 8
 frame = 1

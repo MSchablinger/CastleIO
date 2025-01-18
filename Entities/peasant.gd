@@ -19,24 +19,23 @@ func _ready():
 	if building:
 		target_position = building.global_position
 
-func _physics_process(delta: float):
+func _physics_process(_delta: float):
 	if building != null and not building.is_queued_for_deletion():
 		navigation.target_position = building.global_position
-	if NavigationServer2D.map_get_iteration_id(navigation.get_navigation_map()) > 0:
-		if navigation.is_target_reachable() and !navigation.is_target_reached():
-			move_along_path(delta)
-		else:
-			velocity = Vector2.ZERO
-			play_animation("idle")
-			if can_attack and is_close_to_target():
-				attack_building()
+	if navigation.is_navigation_finished():
+		velocity = Vector2.ZERO
+		play_animation("idle")
+		if can_attack and is_close_to_target():
+			attack_building()
+	else:
+		move_along_path()
 
 func apply_damage(damage: int):
 	progress_bar.value -= damage
 	if progress_bar.value <= 0:
 		queue_free()
 
-func move_along_path(delta: float):
+func move_along_path():
 	var next_point = navigation.get_next_path_position()
 	if global_position.distance_to(next_point) > 1.0:
 		var direction = (next_point - global_position).normalized()

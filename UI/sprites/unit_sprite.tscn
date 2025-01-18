@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Texture2D" uid="uid://ca1hp508iue0j" path="res://Assets/Enemies/Farmer.png" id="1_sprite"]
+
+[node name="UnitSprite" type="Sprite2D"]
+texture = ExtResource("1_sprite") 

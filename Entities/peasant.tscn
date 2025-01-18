@@ -1,7 +1,7 @@
 [gd_scene load_steps=36 format=3 uid="uid://cevjtc14h54s7"]
 
 [ext_resource type="Script" path="res://Entities/peasant.gd" id="1_oqstg"]
-[ext_resource type="Texture2D" uid="uid://hd87tn7lu2r" path="res://Assets/Enemies/Farmer.png" id="1_pknup"]
+[ext_resource type="Texture2D" uid="uid://ca1hp508iue0j" path="res://Assets/Enemies/Farmer.png" id="1_pknup"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j0cye"]
 atlas = ExtResource("1_pknup")

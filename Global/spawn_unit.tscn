@@ -1,7 +1,8 @@
 [gd_scene load_steps=3 format=3 uid="uid://uqkeh627js8c"]
 
 [ext_resource type="Script" path="res://Global/spawn_unit.gd" id="1_b5xw0"]
-[ext_resource type="Texture2D" uid="uid://cwdlhhojrafls" path="res://Assets/xxx/Arthax.png" id="2_g4bx4"]
+
+[ext_resource type="Texture2D" uid="uid://ca1hp508iue0j" path="res://Assets/Enemies/Farmer.png" id="2_sprite"]
 
 [node name="SpawnUnit" type="Node2D"]
 position = Vector2(304, 120)
@@ -40,10 +41,10 @@ text = "No
 "
 metadata/_edit_use_anchors_ = true
 
-[node name="Arthax" type="Sprite2D" parent="."]
+[node name="UnitSprite" type="Sprite2D" parent="."]
 position = Vector2(184, 96)
 scale = Vector2(4, 4)
-texture = ExtResource("2_g4bx4")
+texture = ExtResource("2_sprite")
 hframes = 5
 vframes = 8
 
