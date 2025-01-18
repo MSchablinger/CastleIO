@@ -2,3 +2,15 @@
 .godot/*
 # !.godot/imported/
 .idea/
+
+# Because Godot doesn't create the folders, if they do not exist.
+export/*
+!export/linux/
+!export/windows/
+!export/www/
+export/linux/*
+export/windows/*
+export/www/*
+!export/linux/.keep
+!export/windows/.keep
+!export/www/.keep
