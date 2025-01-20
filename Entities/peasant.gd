@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
-var speed: float = 100.0  # Movement speed of the enemy
-var attack_damage: int = 10  # Damage dealt to the building per attack
-var attack_interval: float = 1.0  # Reduced time between attacks
+var speed: float = 50.0  # Movement speed of the enemy
+var attack_damage: int = 5  # Damage dealt to the building per attack
+var attack_interval: float = 1.0  # Time between attacks
 var health = 100
 var keep: Node  # Store reference to keep
 
@@ -54,25 +54,25 @@ func _physics_process(_delta: float):
 	if closest_wall and closest_distance < 100:
 		building = closest_wall
 		target_position = closest_wall.global_position
-		print("Targeting wall at distance: ", closest_distance)
+		# print("Targeting wall at distance: ", closest_distance)
 		navigation.target_position = target_position
 		
 		if navigation.is_navigation_finished():
 			velocity = Vector2.ZERO
 			play_animation("idle")
 			if can_attack and is_close_to_target():
-				print("Attempting to attack building")
+				# print("Attempting to attack building")
 				attack_building()
 		else:
 			move_along_path()
 	elif building != null and not building.is_queued_for_deletion():
-		print("Current target: ", building.name, " at position: ", building.global_position)
+		# print("Current target: ", building.name, " at position: ", building.global_position)
 		navigation.target_position = building.global_position
 		if navigation.is_navigation_finished():
 			velocity = Vector2.ZERO
 			play_animation("idle")
 			if can_attack and is_close_to_target():
-				print("Attempting to attack building")
+				# print("Attempting to attack building")
 				attack_building()
 		else:
 			move_along_path()
@@ -93,9 +93,9 @@ func move_along_path():
 		velocity = Vector2.ZERO
 
 func attack_building():
-	print("Attack building called. Building: ", building)
+	# print("Attack building called. Building: ", building)
 	if building != null and not building.is_queued_for_deletion() and building.has_method("apply_damage"):
-		print("Dealing damage to building")
+		# print("Dealing damage to building")
 		building.apply_damage(attack_damage)
 		play_animation(get_attack_animation())
 		can_attack = false
@@ -103,7 +103,7 @@ func attack_building():
 
 func is_close_to_target() -> bool:
 	var distance = global_position.distance_to(building.global_position)
-	print("Distance to target: ", distance)
+	# print("Distance to target: ", distance)
 	return distance < 60.0  # Increased attack range
 
 func play_animation(animation_name: String):

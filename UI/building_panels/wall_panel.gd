@@ -71,24 +71,62 @@ func snap_to_grid(pos: Vector2) -> Vector2:
 
 func check_and_update_connections(wall: Node2D):
 	var walls = get_tree().get_nodes_in_group("walls")
+	var connected_walls = []
+	
+	print("Checking connections for wall at: ", wall.position)
+	
 	for other_wall in walls:
 		if other_wall != wall:
 			var distance = wall.position.distance_to(other_wall.position)
 			if distance <= GRID_SIZE:
-				# They're adjacent, update sprites based on relative positions
-				update_wall_sprite(wall, other_wall)
-				update_wall_sprite(other_wall, wall)
-
-func update_wall_sprite(wall: Node2D, adjacent: Node2D):
-	var sprite = wall.get_node("WallSprite")
-	var relative_pos = adjacent.position - wall.position
+				connected_walls.append(other_wall)
+				print("Found connected wall at: ", other_wall.position, " distance: ", distance)
 	
-	# Update frame based on relative position
-	if relative_pos.x > 0:  # Adjacent wall is to the right
-		sprite.frame = 1
-	elif relative_pos.x < 0:  # Adjacent wall is to the left
-		sprite.frame = 1
-	elif relative_pos.y > 0:  # Adjacent wall is below
-		sprite.frame = 2
-	elif relative_pos.y < 0:  # Adjacent wall is above
-		sprite.frame = 2
+	print("Total connected walls: ", connected_walls.size())
+	# Update sprites based on all connections
+	update_wall_sprite(wall, connected_walls)
+	# Update adjacent walls
+	for other_wall in connected_walls:
+		var other_connected = walls.filter(func(w): 
+			return w != other_wall and w != wall and w.position.distance_to(other_wall.position) <= GRID_SIZE
+		)
+		print("Updating connected wall at: ", other_wall.position, " with ", other_connected.size(), " connections")
+		update_wall_sprite(other_wall, other_connected)
+
+func update_wall_sprite(wall: Node2D, connected_walls: Array):
+	var sprite = wall.get_node("WallSprite")
+	var level = wall.Level
+	
+	# Default to corner piece
+	if level == 1:
+		sprite.frame = 3
+	else:
+		sprite.frame = 2 # 4
+	
+	if connected_walls.size() == 2:
+		var pos1 = connected_walls[0].position - wall.position
+		var pos2 = connected_walls[1].position - wall.position
+		
+		# Check if the walls form a straight line
+		var is_horizontal = abs(pos1.y) < GRID_SIZE/2 and abs(pos2.y) < GRID_SIZE/2
+		var is_vertical = abs(pos1.x) < GRID_SIZE/2 and abs(pos2.x) < GRID_SIZE/2
+		
+		# Check if the walls are on opposite sides
+		var opposite_sides = (pos1.x * pos2.x < 0) or (pos1.y * pos2.y < 0)
+		
+		if level == 1:
+			# Level 1 wall frames
+			if is_horizontal and opposite_sides:
+				# Left/right connection (frame 1x3)
+				sprite.frame = 2
+			elif is_vertical and opposite_sides:
+				# Top/bottom connection (frame 2x3)
+				sprite.frame = 5
+		else:
+			# Level 2 and 3 wall frames
+			if is_horizontal and opposite_sides:
+				# Left/right connection (frame 3x1)
+				sprite.frame = 3 # 6
+			elif is_vertical and opposite_sides:
+				# Top/bottom connection (frame 3x2)
+				sprite.frame = 4 # 7

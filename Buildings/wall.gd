@@ -1,6 +1,6 @@
 extends StaticBody2D
 
-var level: int = 1
+var Level: int = 1
 var max_level: int = 3
 var health: float = 100.0
 var is_being_attacked: bool = false
@@ -35,8 +35,8 @@ func apply_damage(damage: int):
 		queue_free()
 
 func upgrade():
-	if level < max_level:
-		level += 1
+	if Level < max_level:
+		Level += 1
 		health += 50  # More health per level
 		progress_bar.max_value = health
 		progress_bar.value = health
@@ -45,15 +45,15 @@ func upgrade():
 	return false
 
 func update_appearance():
-	sprite.texture = load("res://Assets/GodsBuildings/Walls/Lvl0%d.png" % level)
+	sprite.texture = load("res://Assets/GodsBuildings/Walls/Lvl0%d.png" % Level)
 	sprite.hframes = 3
-	sprite.vframes = 2 if level == 1 else 6  # Lvl01 is 3x2, others are 3x6
+	sprite.vframes = 2 if Level == 1 else 6  # Lvl01 is 3x2, others are 3x6
 	sprite.frame = 0  # Always show first frame
 
 func _on_input_event(_viewport, event: InputEvent, _shape_idx):
 	if event is InputEventMouseButton and event.pressed:
 		if event.button_index == MOUSE_BUTTON_RIGHT:  # Right click to upgrade
-			var upgrade_cost = 10 * level  # Increasing cost per level
+			var upgrade_cost = 10 * Level  # Increasing cost per level
 			if Game.wood >= upgrade_cost and Game.stone >= upgrade_cost:
 				if upgrade():
 					Game.wood -= upgrade_cost
