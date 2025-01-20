@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://3gocbn14pqj"]
+
+[ext_resource type="Script" path="res://Buildings/wall.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://br6gc235g47ei" path="res://Assets/GodsBuildings/Walls/Lvl01.png" id="2_texture"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wall"]
+size = Vector2(16, 16)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
+bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fg"]
+bg_color = Color(0, 1, 0, 1)
+
+[node name="Wall" type="StaticBody2D"]
+position = Vector2(1000, 44)
+scale = Vector2(2, 2)
+input_pickable = true
+script = ExtResource("1_script")
+
+[node name="WallSprite" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+texture = ExtResource("2_texture")
+hframes = 3
+vframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_wall")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_wall")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -8.0
+offset_top = -20.0
+offset_right = 8.0
+offset_bottom = -18.0
+theme_override_styles/background = SubResource("StyleBoxFlat_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_fg")
+value = 100.0
+show_percentage = false
+metadata/_edit_use_anchors_ = true
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
+position = Vector2(0, -8)
+vertices = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

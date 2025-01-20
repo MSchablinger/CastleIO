@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://UI/building_panels/wall_panel.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://br6gc235g47ei" path="res://Assets/GodsBuildings/Walls/Lvl01.png" id="2_texture"]
+
+[node name="WallPanel" type="Panel"]
+custom_minimum_size = Vector2(20, 20)
+offset_right = 20.0
+offset_bottom = 20.0
+script = ExtResource("1_script")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(10, 10)
+texture = ExtResource("2_texture")
+hframes = 3
+vframes = 2
+frame = 0
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

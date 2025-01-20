@@ -22,6 +22,21 @@ func _ready():
 func _physics_process(_delta: float):
 	if building != null and not building.is_queued_for_deletion():
 		navigation.target_position = building.global_position
+	else:
+		# Look for nearby walls if no building target
+		var walls = get_tree().get_nodes_in_group("walls")
+		var closest_wall = null
+		var closest_distance = INF
+		
+		for wall in walls:
+			var distance = global_position.distance_to(wall.global_position)
+			if distance < closest_distance:
+				closest_distance = distance
+				closest_wall = wall
+		
+		if closest_wall and closest_distance < 100:  # Attack range
+			building = closest_wall
+			target_position = closest_wall.global_position
 	if navigation.is_navigation_finished():
 		velocity = Vector2.ZERO
 		play_animation("idle")
