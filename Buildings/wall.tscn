@@ -13,7 +13,6 @@ bg_color = Color(1, 0, 0, 1)
 bg_color = Color(0, 1, 0, 1)
 
 [node name="Wall" type="StaticBody2D"]
-position = Vector2(1000, 44)
 scale = Vector2(2, 2)
 input_pickable = true
 script = ExtResource("1_script")

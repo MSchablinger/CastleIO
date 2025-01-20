@@ -289,4 +289,8 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_faxmk")
 value = 100.0
 show_percentage = false
 
+[node name="AttackTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

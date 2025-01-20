@@ -3,20 +3,35 @@ extends StaticBody2D
 var level: int = 1
 var max_level: int = 3
 var health: float = 100.0
+var is_being_attacked: bool = false
 
 @onready var sprite = $WallSprite
 @onready var progress_bar = $ProgressBar
 
 func _ready():
+	print("Wall initialized, adding to walls group")
 	add_to_group("walls")
 	progress_bar.max_value = health
 	progress_bar.value = health
 	update_appearance()
 
 func apply_damage(damage: int):
+	print("Wall taking damage: ", damage, " Current health: ", health)
+	is_being_attacked = true
 	health -= damage
 	progress_bar.value = health
+	# Flash red when taking damage
+	modulate = Color(1, 0, 0)
+	await get_tree().create_timer(0.1).timeout
+	modulate = Color(1, 1, 1)
+	is_being_attacked = false
+	print("Wall health after damage: ", health)
 	if health <= 0:
+		print("Wall destroyed")
+		# Notify attackers that wall is destroyed
+		for attacker in get_tree().get_nodes_in_group("enemies"):
+			if attacker.building == self:
+				attacker.reset_target()
 		queue_free()
 
 func upgrade():

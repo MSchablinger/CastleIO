@@ -1,9 +1,9 @@
 extends Node
 
 var wave: int = 1
-var wood: int = 0
-var stone: int = 0
-var gold: int = 0
+var wood: int = 1000
+var stone: int = 1000
+var gold: int = 1000
 var gold_mine_count: int = 0
 var is_spawn_unit_open: bool = false
 
