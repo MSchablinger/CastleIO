@@ -3,8 +3,8 @@ extends Camera2D
 signal area_selected
 signal atart_move_selection
 
-@export var SPEED: float = 20.0
-@export var ZOOM_SPEED: float = 20.0
+@export var SPEED: float = 10.0
+@export var ZOOM_SPEED: float = 10.0
 @export var ZOOM_MARGIN: float = 0.1
 @export var ZOOM_MIN: float = 0.5
 @export var ZOOM_MAX: float = 3.0
@@ -42,7 +42,7 @@ func zoom_camera(delta: float) -> void:
 	zoom.x = clamp(zoom.x, ZOOM_MIN, ZOOM_MAX)
 	zoom.y = clamp(zoom.y, ZOOM_MIN, ZOOM_MAX)
 	if not zooming:
-		zoomFactor = 1.0
+		zoomFactor = 1
 
 
 func move_camera(delta: float) -> void:
