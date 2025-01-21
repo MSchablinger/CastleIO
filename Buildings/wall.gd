@@ -45,10 +45,24 @@ func upgrade():
 	return false
 
 func update_appearance():
-	sprite.texture = load("res://Assets/GodsBuildings/Walls/Lvl0%d.png" % Level)
-	sprite.hframes = 3
-	sprite.vframes = 2 if Level == 1 else 6  # Lvl01 is 3x2, others are 3x6
-	sprite.frame = 0  # Always show first frame
+	var texture_path = "res://Assets/GodsBuildings/Walls/Lvl%02d.png" % Level
+	print("Loading wall texture: ", texture_path)
+	var new_texture = load(texture_path)
+	if new_texture:
+		print("Successfully loaded texture")
+		sprite.texture = new_texture
+		sprite.region_enabled = false # Disable region mode
+		
+		# Level 1 is 48x32 (3x2), Levels 2 and 3 are 48x96 (3x6)
+		if Level == 1:
+			sprite.hframes = 3
+			sprite.vframes = 2
+		else:
+			sprite.hframes = 3
+			sprite.vframes = 6
+			
+	else:
+		push_error("Failed to load wall texture: " + texture_path)
 
 func _on_input_event(_viewport, event: InputEvent, _shape_idx):
 	if event is InputEventMouseButton and event.pressed:

@@ -101,7 +101,7 @@ func update_wall_sprite(wall: Node2D, connected_walls: Array):
 	if level == 1:
 		sprite.frame = 3
 	else:
-		sprite.frame = 2 # 4
+		sprite.frame = 4
 	
 	if connected_walls.size() == 2:
 		var pos1 = connected_walls[0].position - wall.position
@@ -126,7 +126,7 @@ func update_wall_sprite(wall: Node2D, connected_walls: Array):
 			# Level 2 and 3 wall frames
 			if is_horizontal and opposite_sides:
 				# Left/right connection (frame 3x1)
-				sprite.frame = 3 # 6
+				sprite.frame = 6
 			elif is_vertical and opposite_sides:
 				# Top/bottom connection (frame 3x2)
-				sprite.frame = 4 # 7
+				sprite.frame = 7
