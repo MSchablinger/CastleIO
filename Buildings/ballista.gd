@@ -25,7 +25,7 @@ func update_enemies_in_range():
 	enemies_in_range.clear()
 	for enemy in get_tree().get_nodes_in_group("enemies"):
 		if is_instance_valid(enemy):
-			if global_position.distance_to(enemy.global_position) <= 500:
+			if position.distance_to(enemy.global_position) <= 5000:
 				enemies_in_range.append(enemy)
 
 func _on_fire_timer_timeout():
@@ -38,21 +38,20 @@ func shoot_projectile():
 	if not nearest_enemy:
 		return
 	
-	# Create and launch projectile
 	var projectile = projectile_scene.instantiate()
-	projectile.position = global_position
-	var direction = (nearest_enemy.global_position - global_position).normalized()
-	projectile.rotation = direction.angle()
+	var direction = position.direction_to(nearest_enemy.global_position)
 	add_child(projectile)
-	
+	projectile.rotation = direction.angle()
+	projectile.global_position = global_position
 	# Give the projectile velocity
 	projectile.velocity = direction * projectile_speed
+	projectile.rotation = direction.angle()
 
 func get_nearest_enemy() -> Node2D:
 	var nearest = null
 	var shortest_distance = INF
 	for enemy in enemies_in_range:
-		var distance = global_position.distance_to(enemy.global_position)
+		var distance = position.distance_to(enemy.position)
 		if distance < shortest_distance:
 			shortest_distance = distance
 			nearest = enemy

@@ -1,11 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://bsborf6dhyjq1"]
+[gd_scene load_steps=4 format=3 uid="uid://bsborf6dhyjq1"]
 
 [ext_resource type="Script" path="res://Entities/bolt.gd" id="1_d3l3x"]
 [ext_resource type="Texture2D" uid="uid://ckbq63fleprnr" path="res://Assets/Enemies/Projectiles/BallistaBolt.png" id="2_3ldwa"]
 
-[node name="Bolt" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ywsey"]
+size = Vector2(4, 14)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_d3l3x")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -3.14159
 texture = ExtResource("2_3ldwa")
 hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ywsey")

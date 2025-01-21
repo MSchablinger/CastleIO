@@ -1,6 +1,5 @@
-extends Node2D
+extends CharacterBody2D
 
-@export var velocity: Vector2 = Vector2.ZERO
 @export var lifetime: float = 5.0
 
 func _ready():
@@ -12,7 +11,7 @@ func _ready():
 	timer.start()
 
 func _physics_process(delta):
-	position += velocity * delta
+	move_and_slide()
 
 func _on_body_entered(body):
 	if body.name == "Peasant":
