@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://bgluwtb2bdfdj"]
+[gd_scene load_steps=4 format=3 uid="uid://bgluwtb2bdfdj"]
 
-[ext_resource type="Texture2D" uid="uid://bo0vduwgqxyrm" path="res://Assets/GodsBuildings/Ballista.png" id="1_0lcjx"]
+[ext_resource type="Texture2D" uid="uid://baotu01nftq35" path="res://Assets/GodsBuildings/Ballista.png" id="1_0lcjx"]
+[ext_resource type="Script" path="res://Buildings/ballista.gd" id="1_kit58"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_enytd"]
 size = Vector2(16, 16)
 
 [node name="StaticBody2D" type="StaticBody2D"]
 scale = Vector2(2, 2)
+script = ExtResource("1_kit58")
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -19,7 +21,6 @@ position = Vector2(0, -8)
 texture = ExtResource("1_0lcjx")
 hframes = 7
 vframes = 4
-frame = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -8)

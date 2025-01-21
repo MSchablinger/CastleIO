@@ -7,11 +7,12 @@ func _on_gui_input(event: InputEvent) -> void:
 	print(cost)
 	if Game.wood >= cost and Game.stone >= cost and Game.gold >= cost:
 		var house_instance: StaticBody2D = house.instantiate()
-
+		var camera = get_tree().get_root().get_node("World/Camera")
+		var world_pos = camera.get_global_mouse_position()
 		if event is InputEventMouseButton and event.button_mask == 1:
 			
 			add_child(house_instance)
-			house_instance.global_position = event.global_position
+			house_instance.global_position = world_pos
 			#tempTower.process_mode = Node.PROCESS_MODE_DISABLED
 			
 			house_instance.scale = Vector2(0.32,0.32)
@@ -27,7 +28,7 @@ func _on_gui_input(event: InputEvent) -> void:
 					get_child(1).get_node("Area2D").modulate = Color(0,255,0)
 		elif event is InputEventMouseButton and event.button_mask == 0:
 			#button left release
-			if event.global_position.x <= 0 and event.global_position.x >= 1024:
+			if world_pos.x <= 0 and world_pos.x >= 1024:
 				if get_child_count() > 1:
 					get_child(1).queue_free()
 			else:
@@ -37,7 +38,7 @@ func _on_gui_input(event: InputEvent) -> void:
 				var path = get_tree().get_root().get_node("World/Houses")
 				if (targets.size() < 2):
 					path.add_child(house_instance)
-					house_instance.position = event.global_position
+					house_instance.position = world_pos
 					house_instance.get_node("Area2D").hide()
 					var mini_map_node: SubViewport = get_tree().get_root().get_node("World/UI/MiniMap/SubViewportContainer/SubViewport")
 					mini_map_node.update_resources()

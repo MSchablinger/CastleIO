@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsborf6dhyjq1"]
+
+[ext_resource type="Script" path="res://Entities/bolt.gd" id="1_d3l3x"]
+[ext_resource type="Texture2D" uid="uid://ckbq63fleprnr" path="res://Assets/Enemies/Projectiles/BallistaBolt.png" id="2_3ldwa"]
+
+[node name="Bolt" type="Node2D"]
+script = ExtResource("1_d3l3x")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_3ldwa")
+hframes = 2
