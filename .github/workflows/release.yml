@@ -1,0 +1,49 @@
+name: "Create Release"
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  build:
+    name: Build and Release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Godot
+        uses: chickensoft-games/setup-godot@v1
+        with:
+          version: 4.3
+          use-dotnet: false
+
+      - name: Build Game
+        run: |
+          # Build for Windows
+          godot --headless --export-release "Windows Desktop"
+
+          # Build for Linux
+          godot --headless --export-release "Linux"
+
+          # Build for Web
+          godot --headless --export-release "Web"
+
+      - name: Archive Builds
+        working-directory: export
+        run: |
+          zip -r windows.zip windows/
+          zip -r linux.zip linux/
+          zip -r web.zip www/
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            export/windows.zip
+            export/linux.zip
+            export/web.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
