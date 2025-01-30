@@ -1,6 +1,7 @@
 extends Node2D
 
 var chest_scene = preload("res://World/chest.tscn")
+var well_scene = preload("res://World/well.tscn")
 
 var min_spawn_time := 5.0
 var max_spawn_time := 30.0
@@ -65,12 +66,18 @@ func get_random_position() -> Vector2:
 	return Vector2(x, y)
 
 func spawn_single_chest() -> void:
-	var chest_instance = chest_scene.instantiate()
-	chest_instance.position = get_random_position()
-	
-	# Randomly decide if it's a gold chest (30% chance)
-	var is_gold = randf() < 0.3
-	chest_instance.init(chest_instance.ChestType.GOLD if is_gold else chest_instance.ChestType.NORMAL)
-	
-	add_child(chest_instance)
-	print("Spawned chest at: ", chest_instance.position)
+	# 30% chance for well instead of chest
+	if randf() < 0.3:
+		var well_instance = well_scene.instantiate()
+		well_instance.position = get_random_position()
+		add_child(well_instance)
+	else:
+		var chest_instance = chest_scene.instantiate()
+		chest_instance.position = get_random_position()
+		
+		# Randomly decide if it's a gold chest (30% chance)
+		var is_gold = randf() < 0.3
+		chest_instance.init(chest_instance.ChestType.GOLD if is_gold else chest_instance.ChestType.NORMAL)
+		
+		add_child(chest_instance)
+		print("Spawned chest at: ", chest_instance.position)

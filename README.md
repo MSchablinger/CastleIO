@@ -6,6 +6,7 @@ Build defenses, gather resources, and survive increasingly difficult waves of at
 ## Features
 
 - Resource gathering (wood, stone, gold)
+- Healing wells that restore some castle health when clicked
 - Building system (walls, ballistas, gold mines)
 - Wave-based enemy attacks (infinite waves - no levels)
 - Treasure chest spawning system
@@ -15,7 +16,10 @@ Build defenses, gather resources, and survive increasingly difficult waves of at
 
 Survive waves of enemies trying to destroy your castle keep.
 
-1. Gather resources by clicking trees (wood) and rocks (stone) as well as chests (gold)
+1. Gather resources by:
+   - Clicking trees (wood) and rocks (stone)
+   - Collecting chests (gold)
+   - Using healing wells to restore castle health
 2. Build defenses:
    - Walls to block enemy paths
    - Ballista's to attack enemies
