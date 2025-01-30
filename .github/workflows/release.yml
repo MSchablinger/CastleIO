@@ -28,6 +28,9 @@ jobs:
           # Build for Linux
           godot --headless --export-release "Linux"
 
+          # Build for macOS
+          godot --headless --export-release "macOS"
+
           # Build for Web
           godot --headless --export-release "Web"
 
