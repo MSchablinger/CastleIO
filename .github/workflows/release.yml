@@ -17,7 +17,7 @@ jobs:
       - name: Setup Godot
         uses: chickensoft-games/setup-godot@v1
         with:
-          version: 4.3-stable
+          version: 4.2.2-stable
           use-dotnet: false
 
       - name: Build Game
@@ -39,6 +39,7 @@ jobs:
         run: |
           zip -r windows.zip windows/
           zip -r linux.zip linux/
+          zip -r macos.zip macos/
           zip -r web.zip www/
 
       - name: Create Release
@@ -47,6 +48,7 @@ jobs:
           files: |
             export/windows.zip
             export/linux.zip
+            export/macos.zip
             export/web.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
