@@ -66,6 +66,15 @@ func find_closest_wall() -> Node:
 	return closest_wall if closest_distance < 100 else null
 
 func handle_navigation():
+	if not navigation.is_target_reachable():
+		return
+		
+	var path = NavigationServer2D.map_get_path(navigation.get_navigation_map(), global_position, target_position, true)
+	if path.size() == 0:
+		# Wait for next frame and try again
+		await get_tree().process_frame
+		return
+		
 	if navigation.is_navigation_finished():
 		velocity = Vector2.ZERO
 		play_animation("idle")

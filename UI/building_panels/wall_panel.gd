@@ -1,8 +1,15 @@
-extends Panel
+extends "res://UI/building_panels/building_panel.gd"
 
 var house: PackedScene = preload("res://Buildings/wall.tscn")
 const GRID_SIZE = 32  # Size of each grid cell (doubled)
 var ghost_instance: StaticBody2D = null
+
+func _ready():
+	super._ready()
+	building_name = "Wall"
+	wood_cost = 5
+	stone_cost = 5
+	description = "Defensive wall that blocks enemy movement.\nCan be upgraded with right-click.\nHealth: 100"
 
 func _on_gui_input(event: InputEvent) -> void:
 	var cost = 5 # Base wall cost

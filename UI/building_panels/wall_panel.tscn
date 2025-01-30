@@ -1,16 +1,30 @@
 [gd_scene load_steps=3 format=3]
 
 [ext_resource type="Script" path="res://UI/building_panels/wall_panel.gd" id="1_script"]
-[ext_resource type="Texture2D" uid="uid://br6gc235g47ei" path="res://Assets/GodsBuildings/Walls/Lvl01.png" id="2_texture"]
+[ext_resource type="Texture2D" path="res://Assets/GodsBuildings/Walls/Lvl01.png" id="2_texture"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.12, 0.12, 0.12, 0.8)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.8, 0.8, 0.2)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [node name="WallPanel" type="Panel"]
-custom_minimum_size = Vector2(20, 20)
-offset_right = 20.0
-offset_bottom = 20.0
+custom_minimum_size = Vector2(100, 100)
+offset_right = 100.0
+offset_bottom = 100.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
 script = ExtResource("1_script")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(10, 10)
+position = Vector2(50, 50)
+scale = Vector2(3, 3)
 texture = ExtResource("2_texture")
 hframes = 3
 vframes = 2

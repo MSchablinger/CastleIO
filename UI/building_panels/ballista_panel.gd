@@ -1,6 +1,15 @@
-extends Panel
+extends "res://UI/building_panels/building_panel.gd"
 
 var house: PackedScene = preload("res://Buildings/ballista.tscn")
+
+func _ready():
+	super._ready()
+	building_name = "Ballista Tower"
+	var cost = 10 * (Game.gold_mine_count + 1)
+	wood_cost = cost
+	stone_cost = cost
+	gold_cost = cost
+	description = "Defensive tower that shoots at enemies.\nDamage: 10\nRange: 200"
 
 func _on_gui_input(event: InputEvent) -> void:
 	var cost = 10 * (Game.gold_mine_count + 1)
@@ -10,13 +19,9 @@ func _on_gui_input(event: InputEvent) -> void:
 		var camera = get_tree().get_root().get_node("World/Camera")
 		var world_pos = camera.get_global_mouse_position()
 		if event is InputEventMouseButton and event.button_mask == 1:
-			
 			add_child(house_instance)
 			house_instance.global_position = world_pos
-			#tempTower.process_mode = Node.PROCESS_MODE_DISABLED
-			
-			house_instance.scale = Vector2(0.32,0.32)
-		
+			house_instance.scale = Vector2(2, 2)
 		elif event is InputEventMouseMotion and event.button_mask == 1:
 			#button left down and dragging
 			if get_child_count() > 1:

@@ -20,5 +20,3 @@ region_rect = Rect2(0, 0, 32, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_chest")
-
-[connection signal="input_event" from="." to="." method="_on_input_event"]
