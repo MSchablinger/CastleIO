@@ -6,11 +6,14 @@
 # Because Godot doesn't create the folders, if they do not exist.
 export/*
 !export/linux/
+!export/macos/
 !export/windows/
 !export/www/
 export/linux/*
+export/macos/*
 export/windows/*
 export/www/*
 !export/linux/.keep
+!export/macos/.keep
 !export/windows/.keep
 !export/www/.keep
