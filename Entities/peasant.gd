@@ -2,8 +2,8 @@ extends CharacterBody2D
 
 # Constants and variables
 var speed: float = 50.0
-var attack_damage: int = 5
-var attack_interval: float = 1.0
+var attack_damage: int = 1
+var attack_interval: float = 2
 var health = 100
 var keep: Node
 
